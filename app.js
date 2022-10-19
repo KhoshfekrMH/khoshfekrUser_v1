@@ -22,7 +22,9 @@ const User = mongoose.model("user", userSchema);
 
 //region page("/")
 app.get("/", function (req,res) {
-    res.sendFile(__dirname + '/index.html');
+    res.render("index.ejs", {
+        displayMode: "none"
+    });
 });
 
 app.post("/", function (req,res) {
@@ -37,13 +39,13 @@ app.post("/", function (req,res) {
                if(err) {
                    console.log(err);
                } else {
-                   console.log("User Successfully added!")
+                   console.log("User Successfully added!");
                    res.redirect("/");
                }
            });
        } else {
-           console.log("user exist")
-           res.redirect("/")
+           console.log("user exist");
+           res.redirect("/");
        }
     });
 
